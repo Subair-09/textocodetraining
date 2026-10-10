@@ -211,7 +211,7 @@ export const ThankYouPage: React.FC<ThankYouPageProps> = ({
               <span>We'll see you on October 14, 2026!</span>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Live Online Interactive Masterclass • 100% Free
+              Live Online on Zoom &amp; Google Meet • 100% Free
             </p>
           </div>
 

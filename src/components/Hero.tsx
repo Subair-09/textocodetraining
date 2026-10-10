@@ -1,5 +1,7 @@
 import React from 'react';
 import { Calendar, ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Clock, MonitorPlay } from 'lucide-react';
+import { CountdownTimer } from './CountdownTimer';
+import { LivePlatformBadge } from './LivePlatformBadges';
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -15,14 +17,14 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick }) => {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Top Badge */}
+        {/* Top Badge: 100% FREE LIVE ONLINE TRAINING */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 shadow-xs mb-6 sm:mb-8 transition-transform hover:scale-105">
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
           </span>
           <span className="text-xs sm:text-sm font-extrabold tracking-wide text-blue-800 uppercase">
-            100% FREE LIVE TRAINING
+            100% FREE LIVE ONLINE TRAINING
           </span>
         </div>
 
@@ -88,6 +90,16 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick }) => {
               $0 Registration
             </span>
           </div>
+        </div>
+
+        {/* Live Platform Badge (Zoom & Google Meet) */}
+        <div className="mb-8">
+          <LivePlatformBadge />
+        </div>
+
+        {/* Countdown Timer */}
+        <div className="mb-8 sm:mb-10">
+          <CountdownTimer label="Live Training Starts In:" />
         </div>
 
         {/* Primary CTA Button */}

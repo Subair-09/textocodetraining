@@ -17,7 +17,7 @@ export const TrainingDetails: React.FC<TrainingDetailsProps> = ({ onRegisterClic
     {
       label: 'Format',
       value: 'Live online training',
-      sub: 'Join from anywhere',
+      sub: 'Zoom & Google Meet',
       icon: Monitor,
       accent: 'text-sky-600',
     },

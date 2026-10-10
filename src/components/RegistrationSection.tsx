@@ -169,7 +169,7 @@ export const RegistrationSection: React.FC<RegistrationSectionProps> = ({
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                Reserve Your Free Seat
+                100% FREE LIVE ONLINE TRAINING
               </div>
 
               {/* Form Heading */}

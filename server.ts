@@ -229,6 +229,24 @@ app.post('/api/register', (req: Request, res: Response) => {
     console.error('[Meta CAPI] Dispatch error:', err);
   });
 
+  // Notify Formspree for instant email alert
+  fetch('https://formspree.io/f/meaeklln', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: newRegistration.fullName,
+      email: newRegistration.email,
+      phone: newRegistration.phone,
+      ticket_id: newRegistration.id,
+      training_topic: 'Learn How to Build a Website for Your Business Using AI',
+      event_date: 'October 14, 2026',
+      message: `New attendee registered: ${newRegistration.fullName} (${newRegistration.email}, WhatsApp: ${newRegistration.phone}) - Ticket ID: ${newRegistration.id}`,
+    }),
+  }).catch((err) => console.warn('[Formspree] Server notify error:', err));
+
   console.log(
     `[Textocode Academy] New registrant confirmed: ${newRegistration.fullName} (${newRegistration.email}, ${newRegistration.phone}) - ID: ${newRegistration.id}`
   );

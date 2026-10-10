@@ -123,8 +123,26 @@ export default async function handler(req: any, res: any) {
       req.socket?.remoteAddress;
     const userAgent = req.headers['user-agent'] as string;
 
-    // Fire Conversions API in background
+    // Fire Conversions API and Formspree notification in background
     sendMetaConversionApi(registration, clientIp, userAgent).catch(() => {});
+    
+    // Notify Formspree
+    fetch('https://formspree.io/f/meaeklln', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: registration.fullName,
+        email: registration.email,
+        phone: registration.phone,
+        ticket_id: registration.id,
+        training_topic: 'Learn How to Build a Website for Your Business Using AI',
+        event_date: 'October 14, 2026',
+        message: `New attendee registered: ${registration.fullName} (${registration.email}, WhatsApp: ${registration.phone}) - Ticket ID: ${registration.id}`,
+      }),
+    }).catch((err) => console.warn('[Formspree] Server notify error:', err));
 
     return res.status(201).json({
       success: true,

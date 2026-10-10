@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Calendar, ShieldCheck } from 'lucide-react';
+import { CountdownTimer } from './CountdownTimer';
 
 interface FinalCTAProps {
   onRegisterClick: () => void;
@@ -20,9 +21,14 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onRegisterClick }) => {
         </h2>
 
         {/* Supporting text */}
-        <p className="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
           Join our free live training and learn how AI can help you create a website and explore AI agents for your business.
         </p>
+
+        {/* Countdown Timer */}
+        <div className="mb-10">
+          <CountdownTimer label="Seats Filling Fast • Event Starts In:" />
+        </div>
 
         {/* Button */}
         <div className="max-w-md mx-auto mb-8">

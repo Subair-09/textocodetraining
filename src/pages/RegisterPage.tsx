@@ -15,10 +15,42 @@ import {
   Check,
   ShieldCheck,
 } from 'lucide-react';
+import { ZoomIcon, GoogleMeetIcon } from '../components/LivePlatformBadges';
 
 interface RegisterPageProps {
   whatsappGroupUrl: string;
   onRegistered: (reg: ConfirmedRegistration) => void;
+}
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meaeklln';
+
+async function sendToFormspree(payload: {
+  fullName: string;
+  email: string;
+  phone: string;
+  id: string;
+  date: string;
+}) {
+  try {
+    await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: payload.fullName,
+        email: payload.email,
+        phone: payload.phone,
+        ticket_id: payload.id,
+        training_topic: 'Learn How to Build a Website for Your Business Using AI',
+        event_date: payload.date,
+        message: `New attendee registered: ${payload.fullName} (${payload.email}, WhatsApp: ${payload.phone}) - Ticket ID: ${payload.id}`,
+      }),
+    });
+  } catch (err) {
+    console.warn('[Formspree] Dispatch error:', err);
+  }
 }
 
 export const RegisterPage: React.FC<RegisterPageProps> = ({
@@ -128,6 +160,15 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
         registeredAt: new Date().toISOString(),
       };
 
+      // Send details to Formspree for immediate email notification
+      sendToFormspree({
+        fullName: confirmedReg.fullName,
+        email: confirmedReg.email,
+        phone: confirmedReg.phone,
+        id: confirmedReg.id,
+        date: 'October 14, 2026',
+      }).catch(() => {});
+
       // Save persistently in localStorage
       saveStoredRegistration(confirmedReg);
       onRegistered(confirmedReg);
@@ -144,6 +185,15 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
         phone: phone.trim(),
         registeredAt: new Date().toISOString(),
       };
+
+      // Send details to Formspree even on fallback
+      sendToFormspree({
+        fullName: fallbackReg.fullName,
+        email: fallbackReg.email,
+        phone: fallbackReg.phone,
+        id: fallbackReg.id,
+        date: 'October 14, 2026',
+      }).catch(() => {});
 
       saveStoredRegistration(fallbackReg);
       onRegistered(fallbackReg);
@@ -198,7 +248,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
           <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              100% FREE LIVE MASTERCLASS
+              100% FREE LIVE ONLINE TRAINING
             </div>
 
             {/* Form Heading */}
@@ -212,10 +262,25 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
             </p>
           </div>
 
-          {/* Date info pill */}
-          <div className="mb-8 p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
-            <Calendar className="w-4 h-4 text-blue-600" />
-            <span>October 14, 2026 • Live Online Training • Free Registration</span>
+          {/* Date and Platform info pill */}
+          <div className="mb-8 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold text-slate-700">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-blue-600" />
+              <span>October 14, 2026</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <div className="flex items-center gap-2">
+              <span className="text-slate-500 font-medium text-xs">Live on:</span>
+              <div className="flex items-center gap-1 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                <ZoomIcon className="w-3.5 h-3.5" />
+                <span className="font-bold text-[#0B5CFF] text-xs">Zoom</span>
+              </div>
+              <span className="text-slate-300 text-xs">&amp;</span>
+              <div className="flex items-center gap-1 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                <GoogleMeetIcon className="w-3.5 h-3.5" />
+                <span className="font-bold text-slate-800 text-xs">Meet</span>
+              </div>
+            </div>
           </div>
 
           {/* Server Error Banner */}
