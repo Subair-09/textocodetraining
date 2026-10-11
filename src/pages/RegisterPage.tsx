@@ -14,6 +14,7 @@ import {
   Calendar,
   Check,
   ShieldCheck,
+  MessageCircle,
 } from 'lucide-react';
 import { ZoomIcon, GoogleMeetIcon } from '../components/LivePlatformBadges';
 import { WHATSAPP_DIRECT_URL, WHATSAPP_DISPLAY_NUMBER } from '../components/WhatsAppContactButton';
@@ -284,6 +285,24 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
             </div>
           </div>
 
+          {/* Bold WhatsApp Group Notice Inside Form Box */}
+          <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-500 text-slate-900 shadow-md shadow-emerald-500/10 flex items-start gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <MessageCircle className="w-6 h-6 fill-white" />
+            </div>
+            <div className="text-left">
+              <span className="inline-block px-2.5 py-0.5 rounded-md bg-emerald-600 text-white text-[11px] font-black uppercase tracking-wider mb-1">
+                IMPORTANT STEP
+              </span>
+              <p className="text-base sm:text-lg font-black text-slate-950 leading-tight">
+                MAKE SURE YOU JOIN THE WHATSAPP GROUP AFTER FILLING THIS FORM!
+              </p>
+              <p className="text-xs sm:text-sm text-emerald-950 font-semibold mt-1">
+                All training updates, live webinar access links, and class reminders will only be communicated in the WhatsApp group.
+              </p>
+            </div>
+          </div>
+
           {/* Server Error Banner */}
           {errors.server && (
             <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
@@ -419,8 +438,18 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
               )}
             </div>
 
+            {/* Bold Reminder Above Submit Button */}
+            <div className="pt-2">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-emerald-100/70 border border-emerald-300 text-center">
+                <p className="text-xs sm:text-sm font-black text-emerald-950 uppercase tracking-wide flex items-center justify-center gap-1.5 flex-wrap">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+                  <span>REMINDER: Make sure you join the WhatsApp group after clicking below!</span>
+                </p>
+              </div>
+            </div>
+
             {/* Submit Button */}
-            <div className="pt-3">
+            <div className="pt-1">
               <button
                 type="submit"
                 disabled={isSubmitting}
