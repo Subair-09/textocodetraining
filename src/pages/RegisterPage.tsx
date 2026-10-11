@@ -16,6 +16,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { ZoomIcon, GoogleMeetIcon } from '../components/LivePlatformBadges';
+import { WHATSAPP_DIRECT_URL, WHATSAPP_DISPLAY_NUMBER } from '../components/WhatsAppContactButton';
 
 interface RegisterPageProps {
   whatsappGroupUrl: string;
@@ -476,6 +477,21 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
               <p className="text-[11px] text-slate-500">Direct event access</p>
             </div>
           </div>
+        </div>
+
+        {/* Contact Us WhatsApp Support */}
+        <div className="mt-8 text-center">
+          <p className="text-xs text-slate-500">
+            Have questions before registering?{' '}
+            <a
+              href={WHATSAPP_DIRECT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-700 hover:text-emerald-800 font-bold underline ml-1 inline-flex items-center gap-1"
+            >
+              <span>Chat with us on WhatsApp ({WHATSAPP_DISPLAY_NUMBER})</span>
+            </a>
+          </p>
         </div>
       </div>
     </div>

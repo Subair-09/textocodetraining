@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Monitor, Tag, Building2, ArrowRight } from 'lucide-react';
+import { WHATSAPP_DIRECT_URL, WHATSAPP_DISPLAY_NUMBER } from './WhatsAppContactButton';
 
 interface TrainingDetailsProps {
   onRegisterClick: () => void;
@@ -90,6 +91,17 @@ export const TrainingDetails: React.FC<TrainingDetailsProps> = ({ onRegisterClic
           <p className="mt-3 text-xs text-slate-500 font-medium">
             Limited live session spots • Instant confirmation
           </p>
+          <div className="mt-4 pt-3 border-t border-slate-200/60 inline-flex flex-wrap items-center justify-center gap-1.5 text-xs text-slate-500">
+            <span>Questions? Contact us on WhatsApp:</span>
+            <a
+              href={WHATSAPP_DIRECT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-700 hover:text-emerald-800 font-bold underline inline-flex items-center gap-1"
+            >
+              <span>{WHATSAPP_DISPLAY_NUMBER}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

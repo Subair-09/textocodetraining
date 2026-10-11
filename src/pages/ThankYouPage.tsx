@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   Loader2,
 } from 'lucide-react';
+import { WHATSAPP_DIRECT_URL, WHATSAPP_DISPLAY_NUMBER } from '../components/WhatsAppContactButton';
 
 interface ThankYouPageProps {
   registration: ConfirmedRegistration | null;
@@ -201,6 +202,17 @@ export const ThankYouPage: React.FC<ThankYouPageProps> = ({
               <p className="text-sm sm:text-base font-bold leading-relaxed text-blue-950">
                 All information about the training will be communicated in the WhatsApp group.
               </p>
+            </div>
+            <div className="mt-3 pt-3 border-t border-blue-200/60 flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-xs text-blue-900">
+              <span className="text-slate-600">Have questions or need assistance?</span>
+              <a
+                href={WHATSAPP_DIRECT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-emerald-700 hover:text-emerald-800 underline inline-flex items-center gap-1"
+              >
+                <span>WhatsApp us at {WHATSAPP_DISPLAY_NUMBER}</span>
+              </a>
             </div>
           </div>
 

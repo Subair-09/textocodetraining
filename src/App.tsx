@@ -7,6 +7,7 @@ import { ThankYouPage } from './pages/ThankYouPage';
 import { useCurrentPath, getStoredRegistration } from './navigation';
 import { ConfirmedRegistration } from './types';
 import { initMetaPixel, trackPageView, trackCompleteRegistration } from './pixel';
+import { WhatsAppContactButton } from './components/WhatsAppContactButton';
 
 export default function App() {
   const currentPath = useCurrentPath();
@@ -94,6 +95,9 @@ export default function App() {
 
       {/* Main Content Router */}
       <main className="flex-grow">{renderCurrentPage()}</main>
+
+      {/* Floating WhatsApp Contact Button */}
+      <WhatsAppContactButton variant="floating" />
 
       {/* Minimal Footer */}
       <Footer />

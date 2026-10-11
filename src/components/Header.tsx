@@ -1,6 +1,7 @@
 import React from 'react';
-import { Sparkles, Calendar, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Calendar, CheckCircle2, MessageCircle } from 'lucide-react';
 import { navigateTo } from '../navigation';
+import { WHATSAPP_DIRECT_URL, WHATSAPP_DISPLAY_NUMBER } from './WhatsAppContactButton';
 
 interface HeaderProps {
   isAlreadyRegistered?: boolean;
@@ -36,8 +37,19 @@ export const Header: React.FC<HeaderProps> = ({ isAlreadyRegistered }) => {
           </div>
         </button>
 
-        {/* Live Date Indicator & CTA */}
+        {/* Live Date Indicator & CTA & WhatsApp Contact */}
         <div className="flex items-center gap-2 sm:gap-4">
+          <a
+            href={WHATSAPP_DIRECT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition-colors"
+            title={`Contact us on WhatsApp: ${WHATSAPP_DISPLAY_NUMBER}`}
+          >
+            <MessageCircle className="w-3.5 h-3.5 text-[#25D366] fill-[#25D366]" />
+            <span>WhatsApp: {WHATSAPP_DISPLAY_NUMBER}</span>
+          </a>
+
           <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-semibold">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
             <Calendar className="w-3.5 h-3.5 text-blue-600" />
