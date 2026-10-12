@@ -77,7 +77,7 @@ export const SuccessView: React.FC<SuccessViewProps> = ({
           className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] active:bg-[#1caa52] text-white font-extrabold text-base sm:text-lg tracking-wide shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
         >
           <MessageSquare className="w-6 h-6 fill-white" />
-          <span>JOIN THE WHATSAPP GROUP</span>
+          <span>CLICK ME TO JOIN THE WHATSAPP GROUP</span>
           <ExternalLink className="w-5 h-5 text-emerald-100" />
         </a>
 
